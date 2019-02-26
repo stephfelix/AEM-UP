@@ -78,6 +78,28 @@
         - { folder: "{{publish_folder}}", runmode: "{{aem_publish_runmodes}}" }
         - { folder: "{{author_folder}}",  runmode: "{{aem_author_runmodes}}" }
 
+    - name: Create crx-quickstart/install folder
+      tags: copy_packages
+      file:
+        path: "{{author_folder}}/crx-quickstart/install"
+        state: directory
+
+    - name: Link the author install dir to the publish install dir
+      tags: copy_packages
+      file:
+          path="{{publish_folder}}/crx-quickstart/install"
+          src="{{author_folder}}/crx-quickstart/install"
+          state=link 
+          force=yes
+
+    - name: Add installable packages to the author
+      tags: copy_packages
+      copy: 
+        src="{{item}}"
+        dest="{{author_folder}}/crx-quickstart/install"
+      with_fileglob:
+        - packages/*.zip
+
     - name: Copy license file to author and publish locations
       command: cp {{user_provided_folder}}/license.properties {{item}}
       args:
