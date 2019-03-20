@@ -3,6 +3,7 @@ user-provided/*
 !user-provided/\.gitkeep
 \.vagrant/
 packages/*
+!packages/\.gitkeep
 binaries/\.DS_Store
 
 playbook\.retry
