@@ -12,8 +12,8 @@
 
     # Ports on VM
     # NOTE: To change ports on your localhost, change them in Vagrantfile
-    aem_author_port: 4602
-    aem_publish_port: 4603
+    aem_author_port: 4502
+    aem_publish_port: 4503
     aem_dispatcher_port: 4604
 
     # Configurations that may or may not need to be modified somewhere else :)
