@@ -19,6 +19,7 @@ Vagrant.configure(2) do |config|
         # AEM recomments at least 1920 mb to work properly
         vb.memory = "5000"
         vb.cpus = 2
+        vb.customize ["modifyvm", :id, "--audio", "none"]
     end
     
     # Disable default rsync folder and setup new one
